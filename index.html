@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triážní dotazník – demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>🏥 Triážní dotazník – urgentní příjem</h1>
+      <form id="triageForm">
+        <section>
+          <h2>A. Základní informace</h2>
+          <label
+            >Co se stalo?
+            <textarea name="popis" required></textarea>
+          </label>
+          <label>Kdy začaly potíže?</label>
+          <select name="zacatek">
+            <option>před chvílí</option>
+            <option>dnes</option>
+            <option>včera</option>
+            <option>déle než týden</option>
+          </select>
+          <label
+            >Zhoršuje se stav nyní?
+            <select name="zhorsuje">
+              <option>ano</option>
+              <option>ne</option>
+              <option>nevím</option>
+            </select>
+          </label>
+        </section>
+
+        <section>
+          <h2>B. Život ohrožující příznaky</h2>
+          <label
+            ><input type="checkbox" name="dychani" /> Problémy s dýcháním</label
+          ><br />
+          <label
+            ><input type="checkbox" name="bolest_hrudi" /> Silná bolest na
+            hrudi</label
+          ><br />
+          <label><input type="checkbox" name="vedomi" /> Porucha vědomí</label
+          ><br />
+          <label
+            ><input type="checkbox" name="krvaceni" /> Masivní krvácení</label
+          ><br />
+          <label><input type="checkbox" name="mrtvice" /> Známky mrtvice</label
+          ><br />
+          <label><input type="checkbox" name="krece" /> Křeče</label><br />
+          <label
+            ><input type="checkbox" name="alergie" /> Alergická reakce s
+            otokem/dusností</label
+          >
+        </section>
+
+        <section>
+          <h2>C. Bolest</h2>
+          <label
+            >Kde bolí?
+            <input
+              name="misto_bolesti"
+              placeholder="např. břicho, hlava"
+            /> </label
+          ><br />
+          <label
+            >Intenzita (0–10)
+            <input
+              type="number"
+              name="bolest_skala"
+              min="0"
+              max="10"
+              required
+            /> </label
+          ><br />
+          <label
+            ><input type="checkbox" name="bolest_zhorsuje" /> Bolest se
+            zhoršuje</label
+          >
+        </section>
+
+        <section>
+          <h2>D. Další příznaky</h2>
+          <label
+            ><input type="checkbox" name="dusnost_stredni" /> Střední
+            dušnost</label
+          ><br />
+          <label
+            ><input type="checkbox" name="horecka" /> Horečka &gt; 38.5
+            °C</label
+          ><br />
+          <label
+            ><input type="checkbox" name="uraz_hlava" /> Úraz hlavy se
+            zvracením</label
+          ><br />
+          <label
+            ><input type="checkbox" name="tep" /> Bušení srdce / nepravidelný
+            tep</label
+          >
+        </section>
+
+        <button type="submit">Odeslat formulář</button>
+      </form>
+
+      <div id="result" class="hidden"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

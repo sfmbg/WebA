@@ -1,0 +1,51 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f7f8fa;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+main {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1,
+h2 {
+  color: #0066aa;
+}
+section {
+  margin-bottom: 1.5rem;
+}
+textarea,
+input,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button {
+  background: #0066aa;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background: #004f80;
+}
+.hidden {
+  display: none;
+}
+#result {
+  background: #e8f6e8;
+  border: 1px solid #8bc48b;
+  padding: 1rem;
+  border-radius: 8px;
+}
