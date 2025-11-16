@@ -1,51 +1,67 @@
 body {
   font-family: system-ui, sans-serif;
-  background: #f7f8fa;
-  color: #222;
+  background: #f2f4f8;
   margin: 0;
   padding: 0;
 }
+
 main {
-  max-width: 700px;
+  max-width: 800px;
   margin: 2rem auto;
   background: white;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-h1,
+
+h1 {
+  color: #005c99;
+}
 h2 {
-  color: #0066aa;
+  margin-top: 2rem;
+  color: #004773;
 }
-section {
-  margin-bottom: 1.5rem;
+
+label {
+  display: block;
+  margin: 0.5rem 0;
 }
-textarea,
+
 input,
+textarea,
 select {
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-button {
-  background: #0066aa;
-  color: white;
-  padding: 0.7rem 1.2rem;
-  border: none;
+  padding: 0.6rem;
   border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  height: 70px;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: #0077c7;
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 1rem;
 }
 button:hover {
-  background: #004f80;
+  background: #005999;
 }
+
 .hidden {
   display: none;
 }
+
 #result {
-  background: #e8f6e8;
-  border: 1px solid #8bc48b;
-  padding: 1rem;
-  border-radius: 8px;
+  background: #e9f8e9;
+  padding: 1.5rem;
+  border: 1px solid #99c699;
+  border-radius: 12px;
+  margin-top: 2rem;
 }
