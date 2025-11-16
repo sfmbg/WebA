@@ -96,7 +96,7 @@ document.getElementById("triageForm").addEventListener("submit", function (e) {
   }[priority];
 
   res.innerHTML = `
-    <h2>Údaje odeslány sestře ✅</h2>
+    <h2>Údaje odeslány sestře</h2>
     <p>Byli jste zařazeni do fronty podle naléhavosti.</p>
     <p><b>Orientační priorita: ${priority}</b></p>
     <p><b>Odhad čekací doby:</b> ${waitTime}</p>
