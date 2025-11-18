@@ -8,14 +8,10 @@ document.getElementById("triageForm").addEventListener("submit", function (e) {
     document.querySelectorAll("input[type=checkbox]:checked")
   ).map((c) => c.name);
 
-  // ----------------------------
-  // TRIÁŽNÍ ALGORITMUS (DEMO)
-  // ----------------------------
+  let priority = "ESI5"; // default
 
-  let priority = "T5"; // default
-
-  // --- T1 (okamžitě) ---
-  const t1 = [
+  // --- ESI1 (okamžitě) ---
+  const ESI1 = [
     "a_duch",
     "a_otok",
     "b_modrani",
@@ -28,39 +24,38 @@ document.getElementById("triageForm").addEventListener("submit", function (e) {
     "neuro_videni",
     "neuro_vedomi",
   ];
-  if (checked.some((c) => t1.includes(c)) || data.b_dychani === "nemohu") {
-    priority = "T1";
+  if (checked.some((c) => ESI1.includes(c)) || data.b_dychani === "nemohu") {
+    priority = "ESI1";
   }
 
-  // --- T2 ---
-  const t2 = ["dusnost_stredni", "uraz_mech", "c_tep"];
-  if (priority === "T5" || priority === "T4" || priority === "T3") {
+  // --- ESI2 ---
+  const ESI2 = ["dusnost_stredni", "uraz_mech", "c_tep"];
+  if (priority === "ESI5" || priority === "ESI4" || priority === "ESI3") {
     if (
       data.b_dychani === "vyrazne" ||
       Number(data.bolest_skala) >= 7 ||
-      checked.some((c) => t2.includes(c))
+      checked.some((c) => ESI2.includes(c)) ||
+      data.dusnost === "těžká"
     ) {
-      priority = "T2";
+      priority = "ESI2";
     }
   }
 
-  // --- T3 ---
-  if (priority === "T5" || priority === "T4") {
-    if (Number(data.bolest_skala) >= 4 || data.dusnost === "stredni") {
-      priority = "T3";
+  // --- ESI3 ---
+  if (priority === "ESI5" || priority === "ESI4") {
+    if (Number(data.bolest_skala) >= 4 || data.dusnost === "střední") {
+      priority = "ESI3";
     }
   }
 
-  // --- T4 ---
-  if (priority === "T5") {
+  // --- ESI4 ---
+  if (priority === "ESI5") {
     if (Number(data.bolest_skala) >= 1) {
-      priority = "T4";
+      priority = "ESI4";
     }
   }
 
-  // ----------------------------
   // ULOŽENÍ (demo → localStorage)
-  // ----------------------------
   const record = {
     time: new Date().toISOString(),
     identifikace: {
@@ -79,20 +74,18 @@ document.getElementById("triageForm").addEventListener("submit", function (e) {
   all.push(record);
   localStorage.setItem("triageDemo", JSON.stringify(all, null, 2));
 
-  // ----------------------------
   // ZOBRAZENÍ VÝSLEDKU
-  // ----------------------------
   document.getElementById("triageForm").classList.add("hidden");
 
   const res = document.getElementById("result");
   res.classList.remove("hidden");
 
   let waitTime = {
-    T1: "0 minut (okamžitě)",
-    T2: "do 10 minut",
-    T3: "do 30 minut",
-    T4: "60–120 minut",
-    T5: "dle vytíženosti (nízká priorita)",
+    ESI1: "0 minut (okamžitě)",
+    ESI2: "do 10 minut",
+    ESI3: "do 30 minut",
+    ESI4: "60–120 minut",
+    ESI5: "dle vytíženosti (nízká priorita)",
   }[priority];
 
   res.innerHTML = `
@@ -101,11 +94,10 @@ document.getElementById("triageForm").addEventListener("submit", function (e) {
     <p><b>Orientační priorita: ${priority}</b></p>
     <p><b>Odhad čekací doby:</b> ${waitTime}</p>
     ${
-      priority === "T1"
-        ? "<p style='color:red'><b>Okamžitě počkejte na personál – kritický stav!</b></p>"
+      priority === "ESI1"
+        ? "<p style='color:red'><b>Vyčkejte prosím na personál.</b></p>"
         : ""
     }
     <hr>
-    <p><small>(Toto je DEMO – data jsou uložena pouze ve vašem prohlížeči.)</small></p>
   `;
 });

@@ -16,9 +16,9 @@
         <section>
           <h2>1) Údaje o pacientovi</h2>
 
-          <label>Jméno <input name="jmeno" required /></label>
-          <label>Příjmení <input name="prijmeni" required /></label>
-          <label>Datum narození / RČ <input name="narozeni" required /></label>
+          <label>Jméno* <input name="jmeno" required /></label>
+          <label>Příjmení* <input name="prijmeni" required /></label>
+          <label>Datum narození* / RČ <input name="narozeni" required /></label>
           <label>Adresa <input name="adresa" /></label>
           <label>Telefon <input name="telefon" type="tel" /></label>
           <label>Zdravotní pojišťovna <input name="pojistovna" /></label>
@@ -45,7 +45,6 @@
           </label>
         </section>
 
-        <!-- 2) ABCDE -->
         <section>
           <h2>2) Rychlý screening</h2>
 
@@ -109,9 +108,9 @@
           <h2>3) Hlavní potíže</h2>
 
           <h3>A. Bolest</h3>
-          <label>Kde bolí? <input name="bolest_misto" required /></label>
+          <label>Popište obtíže* <input name="bolest_misto" required /></label>
           <label
-            >Intenzita bolesti (0–10)
+            >Intenzita bolesti (0–10)*
             <input
               type="number"
               name="bolest_skala"
@@ -134,9 +133,9 @@
             >Dušnost:
             <select name="dusnost">
               <option>žádná</option>
-              <option>lehka</option>
-              <option>stredni</option>
-              <option>tezka</option>
+              <option>lehká</option>
+              <option>střední</option>
+              <option>těžká</option>
             </select>
           </label>
           <label
