@@ -3,14 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Triážní dotazník</title>
+    <title>Dotazník urgentního příjmu</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <main>
-      <h1>Triážní dotazník – urgentní příjem</h1>
-
+      <h1>Dotazník urgentního příjmu</h1>
+      <p>
+        Tento dotazník slouží ke zjednodušení a zefektivnění komunikace mezi
+        Vámi a personálem. Následně se s Vámi setká sestra, která Vám přiřadí
+        pořadové číslo. Uvádějte pouze pravdivé informace. Pořadí pacienta
+        určuje zdravotní stav, ne čas příchodu.
+      </p>
+      <p>Pole označená hvězdičkou jsou povinná.</p>
       <form id="triageForm">
         <!-- 1) IDENTIFIKACE -->
         <section>
@@ -26,15 +32,6 @@
           <label
             >Kontakt na blízkou osobu <input name="kontakt_blizka"
           /></label>
-
-          <label
-            >Doprovod?
-            <select name="doprovod">
-              <option>ne</option>
-              <option>ano</option>
-            </select>
-          </label>
-
           <label
             >Identifikace dokladem
             <select name="doklad">
@@ -44,9 +41,87 @@
             </select>
           </label>
         </section>
-
+        <!-- 2) HLAVNÍ POTÍŽE -->
         <section>
-          <h2>2) Rychlý screening</h2>
+          <h2>2) Hlavní potíže</h2>
+
+          <h3>A. Bolest</h3>
+          <label>Popište obtíže* <input name="bolest_misto" required /></label>
+          <label
+            >Délka trvání obtíží* <input name="bolest_delka" required
+          /></label>
+          <label
+            >Intenzita*
+            <select name="bolest_intenzita" required>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </label>
+
+          <h3>B. Dýchání a hrudník</h3>
+          <label
+            >Dušnost:
+            <select name="dusnost">
+              <option>žádná</option>
+              <option>lehká</option>
+              <option>střední</option>
+              <option>těžká</option>
+            </select>
+          </label>
+
+          <h3>C. Neurologické příznaky</h3>
+          <label
+            ><input type="checkbox" name="neuro_koutek" /> Pokles koutku</label
+          >
+          <label><input type="checkbox" name="neuro_rec" /> Porucha řeči</label>
+          <label
+            ><input type="checkbox" name="neuro_videni" /> Porucha vidění</label
+          >
+          <label><input type="checkbox" name="neuro_brneni" /> Brnění</label>
+          <label
+            ><input type="checkbox" name="neuro_vedomi" /> Ztráta vědomí</label
+          >
+
+          <h3>D. Úrazy</h3>
+          <label><input type="checkbox" name="uraz_krvaceni" /> Krvácení</label>
+          <label
+            ><input type="checkbox" name="uraz_zlomenina" /> Podezření na
+            zlomeninu</label
+          >
+
+          <h3>E. Trávení</h3>
+          <label
+            ><input type="checkbox" name="trav_bricho" /> Bolest břicha</label
+          >
+          <label
+            ><input type="checkbox" name="trav_zvraceni" />
+            Zvracení/průjem</label
+          >
+
+          <h3>F. Horečka</h3>
+          <label>Teplota: <input name="teplota" type="number" /></label>
+
+          <h3>G. Ostatní</h3>
+          <label>Výška v cm <input name="vyska" type="number" /></label>
+          <label>Váha v kg <input name="vaha" type="number" /></label>
+          <label>Chronické nemoci <input name="chronicke" /></label>
+          <label>Alergie <input name="alergie_txt" /></label>
+          <label
+            ><input type="checkbox" name="tehotenstvi" /> Těhotenství</label
+          >
+        </section>
+        <!-- 3) RYCHLÝ SCREENING -->
+        <section>
+          <h2>3) Rychlý screening</h2>
 
           <h3>A – Dýchací cesty</h3>
           <label
@@ -91,100 +166,11 @@
           <label
             ><input type="checkbox" name="d_vedomi" /> Porucha vědomí</label
           >
-          <label><input type="checkbox" name="d_zmatenost" /> Zmatenost</label>
           <label><input type="checkbox" name="d_krece" /> Křeče</label>
 
           <h3>E – Celkový stav</h3>
           <label><input type="checkbox" name="e_horecka" /> Horečka</label>
           <label><input type="checkbox" name="e_vyrazka" /> Vyrážka</label>
-          <label
-            ><input type="checkbox" name="e_silna_bolest" /> Silná bolest
-            kdekoliv</label
-          >
-        </section>
-
-        <!-- 3) HLAVNÍ POTÍŽE -->
-        <section>
-          <h2>3) Hlavní potíže</h2>
-
-          <h3>A. Bolest</h3>
-          <label>Popište obtíže* <input name="bolest_misto" required /></label>
-          <label
-            >Intenzita bolesti (0–10)*
-            <input
-              type="number"
-              name="bolest_skala"
-              min="0"
-              max="10"
-              required
-            />
-          </label>
-          <label
-            >Charakter bolesti
-            <select name="bolest_typ">
-              <option>náhlá</option>
-              <option>postupná</option>
-              <option>kolísavá</option>
-            </select>
-          </label>
-
-          <h3>B. Dýchání a hrudník</h3>
-          <label
-            >Dušnost:
-            <select name="dusnost">
-              <option>žádná</option>
-              <option>lehká</option>
-              <option>střední</option>
-              <option>těžká</option>
-            </select>
-          </label>
-          <label
-            ><input type="checkbox" name="hrud_bolest" /> Bolest na hrudi</label
-          >
-
-          <h3>C. Neurologické příznaky</h3>
-          <label
-            ><input type="checkbox" name="neuro_koutek" /> Pokles koutku</label
-          >
-          <label><input type="checkbox" name="neuro_rec" /> Porucha řeči</label>
-          <label
-            ><input type="checkbox" name="neuro_videni" /> Porucha vidění</label
-          >
-          <label><input type="checkbox" name="neuro_brneni" /> Brnění</label>
-          <label
-            ><input type="checkbox" name="neuro_vedomi" /> Ztráta vědomí</label
-          >
-
-          <h3>D. Úrazy</h3>
-          <label>Mechanismus úrazu <input name="uraz_mech" /></label>
-          <label><input type="checkbox" name="uraz_krvaceni" /> Krvácení</label>
-          <label
-            ><input type="checkbox" name="uraz_zlomenina" /> Podezření na
-            zlomeninu</label
-          >
-
-          <h3>E. Trávení</h3>
-          <label
-            ><input type="checkbox" name="trav_bricho" /> Bolest břicha</label
-          >
-          <label
-            ><input type="checkbox" name="trav_zvraceni" />
-            Zvracení/průjem</label
-          >
-          <label
-            ><input type="checkbox" name="trav_krev" /> Krev ve
-            stolici/zvratcích</label
-          >
-
-          <h3>F. Horečka</h3>
-          <label>Teplota: <input name="teplota" type="number" /></label>
-
-          <h3>G. Ostatní</h3>
-          <label
-            ><input type="checkbox" name="tehotenstvi" /> Těhotenství</label
-          >
-          <label>Chronické nemoci <input name="chronicke" /></label>
-          <label>Alergie <input name="alergie_txt" /></label>
         </section>
 
         <button type="submit">Odeslat dotazník</button>
